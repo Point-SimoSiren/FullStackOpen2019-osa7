@@ -34,7 +34,7 @@ const Menu = ({ anecdotes, addNew, vote }) => {
                     </Link>
 
                     <Route exact path="/" render={() =>
-                        <AnecdoteList anecdotes={anecdotes} vote={vote} />
+                        <AnecdoteList anecdotes={anecdotes} Link={Link} vote={vote} />
                     } />
                     <Route exact path="/about" render={() =>
                         <About />

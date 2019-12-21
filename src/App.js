@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import AnecdoteList from './components/AnecdoteList'
-import About from './components/About'
 import Footer from './components/Footer'
-import Menu from './Menu'
-import CreateNew from './components/CreateNew'
+import Menu from './components/Menu'
+import Header from './components/Header'
+
+/* App sisältää tilan ja tapahtumankäsittelijöitä,
+   jotka annetaan propseina komponenteille.
+   Menussa on valikko ja kaikki näkymät mitä sen kautta tarjotaan
+   saavat propsinsa sieltä */
 
 const App = () => {
   const [anecdotes, setAnecdotes] = useState([
@@ -46,14 +49,10 @@ const App = () => {
 
   return (
     <div>
-      <h1>Software anecdotes</h1>
-      <Menu />
-      <AnecdoteList anecdotes={anecdotes} />
-      <About />
-      <CreateNew addNew={addNew} />
+      <Header />
+      <Menu anecdotes={anecdotes} addNew={addNew} vote={vote} />
       <Footer />
     </div>
   )
 }
-
-export default App;
+export default App

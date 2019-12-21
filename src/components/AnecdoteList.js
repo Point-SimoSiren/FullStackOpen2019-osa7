@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AnecdoteList = ({ anecdotes }) => (
+const AnecdoteList = ({ anecdotes, vote, setNotification }) => (
     <div>
         <h2>Anecdotes</h2>
         <ul>

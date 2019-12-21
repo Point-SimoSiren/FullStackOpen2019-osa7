@@ -15,6 +15,26 @@ const CreateNew = (props) => {
             votes: 0
         })
     }
+    const style1 = {
+        marginLeft: 80,
+        padding: 5,
+
+    }
+    const style2 = {
+        marginLeft: 86,
+        padding: 5,
+
+    }
+    const style3 = {
+        marginLeft: 20,
+        padding: 5,
+
+    }
+    const bt = {
+        padding: 10,
+        marginLeft: 3,
+        backgroundColor: 'orange'
+    }
 
     return (
         <div>
@@ -22,17 +42,17 @@ const CreateNew = (props) => {
             <form onSubmit={handleSubmit}>
                 <div>
                     content
-            <input name='content' value={content} onChange={(e) => setContent(e.target.value)} />
+            <input style={style1} name='content' value={content} onChange={(e) => setContent(e.target.value)} />
                 </div>
                 <div>
                     author
-            <input name='author' value={author} onChange={(e) => setAuthor(e.target.value)} />
+            <input style={style2} name='author' value={author} onChange={(e) => setAuthor(e.target.value)} />
                 </div>
                 <div>
                     url for more info
-            <input name='info' value={info} onChange={(e) => setInfo(e.target.value)} />
+            <input style={style3} name='info' value={info} onChange={(e) => setInfo(e.target.value)} />
                 </div>
-                <button>create</button>
+                <button style={bt}>create</button>
             </form>
         </div>
     )

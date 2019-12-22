@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 
-const CreateNew = (props) => {
+const CreateNew = ({ addNew, history }) => {
     const [content, setContent] = useState('')
     const [author, setAuthor] = useState('')
     const [info, setInfo] = useState('')
@@ -8,12 +9,13 @@ const CreateNew = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.addNew({
+        addNew({
             content,
             author,
             info,
             votes: 0
         })
+        history.push('/')
     }
     const style1 = {
         marginLeft: 80,
@@ -57,4 +59,4 @@ const CreateNew = (props) => {
         </div>
     )
 }
-export default CreateNew
+export default withRouter(CreateNew)

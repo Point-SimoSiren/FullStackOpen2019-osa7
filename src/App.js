@@ -30,17 +30,21 @@ const App = () => {
     }
   ])
 
-  const [notification, setNotification] = useState('')
+  const [notification, setNotification] = useState(null)
 
-  const addNew = (anecdote, props) => {
+  //______________ADD NEW ______________________________
+
+  const addNew = (anecdote) => {
     anecdote.id = (Math.random() * 10000).toFixed(0)
     setAnecdotes(anecdotes.concat(anecdote))
-    props.history.push('/')
+
     setNotification(`a new notification ${anecdote.content} created!`)
     setTimeout(() => {
       setNotification(null)
     }, 5000)
   }
+
+  //______________________________________________________
 
   const anecdoteById = (id) =>
     anecdotes.find(a => a.id === id)
@@ -70,34 +74,42 @@ const App = () => {
               anecdotes
             </button>
           </Link>
+
           <Link to="/create">
             <button style={btnStyle} type="button">
               write new!
               </button>
           </Link>
+
           <Link to="/about">
             <button style={btnStyle} type="button">
               about
             </button>
           </Link>
+
           <Notification notification={notification} />
 
           <Route exact path="/" render={() =>
             <AnecdoteList anecdotes={anecdotes} Link={Link} vote={vote} />
           } />
+
           <Route exact path="/anecdotes/:id" render={({ match }) =>
             <Anecdote anecdote={anecdoteById(match.params.id)} />
           } />
+
           <Route exact path="/about" render={() =>
             <About />
           } />
+
           <Route exact path="/create" render={() =>
-            <CreateNew addNew={addNew} />
+            <CreateNew addNew={addNew} withRouter={withRouter} />
           } />
+
         </div>
       </Router >
       < Footer />
     </div >
   )
 }
+
 export default App
